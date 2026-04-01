@@ -3,15 +3,8 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-# Vendor blobs
-$(call inherit-product, vendor/nokia/PL2/PL2-vendor.mk)
-
-# Set Shipping API level
-PRODUCT_SHIPPING_API_LEVEL := 27
-
-# Overlays
-DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay
+# Inherit from nokia sdm660-common
+$(call inherit-product, device/nokia/sdm660-common/common.mk)
 
 # AAPT
 PRODUCT_AAPT_CONFIG := normal
@@ -49,6 +42,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/nfc/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf \
     $(LOCAL_PATH)/configs/nfc/libnfc-sec-vendor.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-sec-vendor.conf
 
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay
+
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hce.xml \
@@ -61,5 +58,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
 
-# Inherit from nokia sdm660-common
-$(call inherit-product, device/nokia/sdm660-common/common.mk)
+# Set Shipping API level
+PRODUCT_SHIPPING_API_LEVEL := 27
+
+# Vendor blobs
+$(call inherit-product, vendor/nokia/PL2/PL2-vendor.mk)

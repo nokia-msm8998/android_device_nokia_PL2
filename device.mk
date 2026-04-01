@@ -6,6 +6,10 @@
 # Inherit from nokia sdm660-common
 $(call inherit-product, device/nokia/sdm660-common/common.mk)
 
+# Audio
+PRODUCT_PACKAGES += \
+    audio_amplifier.sdm660
+
 # AAPT
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi

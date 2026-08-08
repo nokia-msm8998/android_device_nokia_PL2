@@ -27,7 +27,9 @@ namespace_imports = [
 
 blob_fixups: blob_fixups_user_type = {
     'vendor/lib/hw/camera.sdm660.so': blob_fixup()
-        .add_needed('libui_shim.so'),
+        .add_needed('libui_shim.so')
+        .sig_replace('c1 68 d0 e9 0d 20 cd e9 03 20', 'c1 68 d0 e9 12 20 cd e9 03 20')
+        .sig_replace('49 6b c6 e9 04 21', '89 6c c6 e9 04 21'),
     ('vendor/lib/libmmcamera_faceproc.so', 'vendor/lib/libmmcamera_faceproc2.so'): blob_fixup()
         .clear_symbol_version('__aeabi_memcpy')
         .clear_symbol_version('__aeabi_memset')
